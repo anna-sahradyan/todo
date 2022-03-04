@@ -1,0 +1,54 @@
+
+*,
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", sans-serif;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    position: relative;
+    min-height: 100%;
+    background-position: right;
+    background-image: url('../img/to-do.jpg');
+
+}
+
+html {
+    height: 100%;
+
+}
+
+.wrapper {
+    min-width: 100%;
+    z-index: 1;
+    position: relative;
+    display: grid;
+    min-height: 100%;
+    grid-template-rows:minmax(200px, auto)1fr minmax(1fr, auto);
+    grid-template-areas:
+            "header"
+            "main"
+            "footer"
+
+}
+
+.main {
+    position: relative;
+    display: grid;
+    grid-area: main;
+    min-width: 1200px;
+    margin: auto;
+    min-height: auto;
+    /*color: #EBDEF0;*/
+
+}
+
+
