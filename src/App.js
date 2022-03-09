@@ -1,14 +1,22 @@
-import React, {useEffect} from 'react';
-import {useDispatch} from "react-redux";
-import {fetchTodo} from "./redux";
-
+import React from 'react';
+import Nav from "./components/navBar";
+import {Route, Routes} from 'react-router-dom';
+import Home from "./components/home";
+import TodoForm from "./components/todo/TodoForm";
 const App = () => {
-    let dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(fetchTodo());
-    }, [])
     return (
         <>
+            <div className='wrapper'>
+                <Nav/>
+
+                <div className='main'>
+                    <Routes>
+                        <Route path={'/'} element={<Home/>}/>
+                        <Route path={'/todo'} element={<TodoForm/>}/>
+
+                    </Routes>
+                </div>
+            </div>
 
         </>
     );
