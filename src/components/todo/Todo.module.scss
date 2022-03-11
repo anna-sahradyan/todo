@@ -1,5 +1,5 @@
 @import "../../common/color";
-
+@import '~antd/dist/antd.css';
 .contentDiv {
   position: relative;
   width: 100%;
@@ -13,7 +13,7 @@
   width: 1200px;
   margin: auto;
   // border: 1px solid white;
-  height: 100vh;
+  height: auto;
 }
 
 .formPart {
@@ -31,7 +31,7 @@
 
 .boxInputShow {
   position: absolute;
-  transform: translate(20%, 20%);
+  transform: translate(10%, 10%);
 
   .textInput {
     background-color: $primary-color;
@@ -70,7 +70,7 @@
   width: 400px;
   height: 60px;
   top: 130px;
-  left: 29%;
+  left: 26.5%;
 
 
   ul {
@@ -79,41 +79,65 @@
 
   li {
     border-radius: 5px;
-    width: 400px;
+    width: 480px;
     height: 60px;
     display: flex;
     gap: 0.5rem;
     background-color: $primary-color;
     border: 1px solid #0f172b;
 
+
   }
 
 }
 
 
-.icons {
+.iconRemove {
   position: absolute;
-  left: 100%;
+  left: 120%;
   z-index: 1;
-margin-top: 13px;
+  margin-top: 13px;
 
 }
+.editIcon{
+  position: absolute;
+  left: 110%;
+  z-index: 1;
+  margin-top: 13px;
 
-.titleItem{
+}
+.titleItem {
   position: absolute;
   margin-left: 35px;
   margin-top: 5px;
   width: 360px;
 }
-.boxList{
+
+.boxList {
   width: 400px;
   height: 60px;
   top: 90px;
   left: 80px;
   background-color: $primary-color;
 }
-.footerBox{
+
+.footerBox {
+  margin-left: 66%;
+  margin-top: -3%;
+}
+
+.page {
+
+  margin-left: 30%;
+  margin-top: 40%;
+  color: $primary-color;
+
+}
+.statusPage{
   position: absolute;
-  left: 62%;
-  top: 95%;
+  z-index: 2;
+  width: 400px;
+  height: 60px;
+  top: -50px;
+  left:40%;
 }

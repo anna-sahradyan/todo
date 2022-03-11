@@ -3,7 +3,7 @@ import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 export const fetchAddTodos = createAsyncThunk('todo/fetchAddTodos', async function (_, {rejectWithValue}) {
 
     try {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/todos?_limit=5`);
+        const response = await fetch(`https://jsonplaceholder.typicode.com/todos?_page=1&_limit=20`);
         if (!response.ok) {
             throw new Error('Server Error!');
         }
@@ -57,29 +57,28 @@ export const toggleStatus = createAsyncThunk('todo/toggleStatus',
 //addNewTodo
 export const addNewTodo = createAsyncThunk('todo/addNewTodo', async function (inputValue, {rejectWithValue, dispatch}) {
     try {
-        const newTodo ={
-            title:inputValue,
-            userId:1,
-            completed:false,
+        const newTodo = {
+            title: inputValue,
+            userId: 1,
+            completed: false,
         }
-        const response=await fetch(`https://jsonplaceholder.typicode.com/todos`,{
-            method:'POST',
-            headers:{
-                'Content-Type':'application/json'
+        const response = await fetch(`https://jsonplaceholder.typicode.com/todos`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
             },
-            body:JSON.stringify(newTodo)
+            body: JSON.stringify(newTodo)
         });
-        if(!response.ok){
+        if (!response.ok) {
             throw  new Error('Can\'t add task .Server error')
         }
-        const data=await response.json();
+        const data = await response.json();
         dispatch(addTodos(data));
     } catch (error) {
         return rejectWithValue(error.message);
     }
 
 })
-
 const setError = (state, action) => {
     state.status = 'rejected';
     state.error = action.payload;
@@ -110,6 +109,7 @@ const todoSlice = createSlice({
         },
     },
 
+
     extraReducers: {
         [fetchAddTodos.pending]: (state) => {
             state.status = 'loading'
@@ -128,6 +128,6 @@ const todoSlice = createSlice({
 
 });
 
-const {toggleTodoComplete, removeTodo, addTodos} = todoSlice.actions;
+ const {toggleTodoComplete, removeTodo, addTodos} = todoSlice.actions;
 export const selectTodo = state => state.todo.todo;
 export default todoSlice.reducer;

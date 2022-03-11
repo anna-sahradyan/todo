@@ -1,33 +1,33 @@
-import React, {useEffect} from 'react';
-import {IconButton, Stack} from "@mui/material";
+import React from 'react';
+import {IconButton,Stack} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import {useDispatch, useSelector} from "react-redux";
-import {deleteTodo, fetchAddTodos, selectTodo} from "../../store/todoSlice";
+import {deleteTodo, selectTodo} from "../../store/todoSlice";
+
 
 
 const TodoFooter = () => {
-    const todos=useSelector(selectTodo);
-    let dispatch=useDispatch()
-    useEffect(() => {
-        dispatch(fetchAddTodos());
+    const todos = useSelector(selectTodo);
+    let dispatch = useDispatch();
 
-    }, [dispatch]);
+
     const clearCompleted = () => {
-
-            todos.filter(item=>dispatch(deleteTodo(item.id)))
+        todos.filter(item => dispatch(deleteTodo(item.id)))
 
 
     }
+
+
     return (
         <div>
 
-            <Stack direction="row" spacing={1}>
-                <IconButton aria-label="delete"onClick={clearCompleted}>
-                    <DeleteIcon />
-                </IconButton>
-            </Stack>
+        <Stack direction="row" spacing={1}>
+            <IconButton aria-label="delete" onClick={clearCompleted}>
+                <DeleteIcon/>
+            </IconButton>
+        </Stack>
 
-        </div>
+    </div>
     );
 };
 
